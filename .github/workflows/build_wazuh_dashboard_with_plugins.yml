@@ -180,7 +180,7 @@ jobs:
   build-base:
     needs: [validate-job]
     name: Build dashboard
-    uses: wazuh/wazuh-dashboard/.github/workflows/build_base.yml@v4.11.0
+    uses: Pawel5sekund/wazuh-dashboard/.github/workflows/build_base.yml@v4.11.0
     with:
       CHECKOUT_TO: ${{ github.head_ref || github.ref_name }}
 
