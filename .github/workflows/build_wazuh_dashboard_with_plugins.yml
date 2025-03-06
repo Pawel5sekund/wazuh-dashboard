@@ -232,7 +232,7 @@ jobs:
   build-base:
     needs: [validate-job]
     name: Build dashboard
-    uses: wazuh/wazuh-dashboard/.github/workflows/build_base.yml@main
+    uses: Pawel5sekund/wazuh-dashboard/.github/workflows/build_base.yml@4.11.0
     with:
       CHECKOUT_TO: ${{ github.head_ref || github.ref_name }}
       ARCHITECTURE: ${{ inputs.architecture }}
@@ -240,21 +240,21 @@ jobs:
   build-main-plugins:
     needs: [validate-job]
     name: Build plugins
-    uses: wazuh/wazuh-dashboard-plugins/.github/workflows/manual-build.yml@main
+    uses: wazuh/wazuh-dashboard-plugins/.github/workflows/manual-build.yml@4.11.0
     with:
       reference: ${{ inputs.reference_wazuh_plugins }}
 
   build-security-plugin:
     needs: [validate-job]
     name: Build security plugin
-    uses: wazuh/wazuh-security-dashboards-plugin/.github/workflows/manual-build.yml@main
+    uses: wazuh/wazuh-security-dashboards-plugin/.github/workflows/manual-build.yml@4.11.0
     with:
       reference: ${{ inputs.reference_security_plugins }}
 
   build-report-plugin:
     needs: [validate-job]
     name: Build reporting plugin
-    uses: wazuh/wazuh-dashboards-reporting/.github/workflows/manual-build.yml@main
+    uses: wazuh/wazuh-dashboards-reporting/.github/workflows/manual-build.yml@4.11.0
     with:
       reference: ${{ inputs.reference_report_plugins }}
   build-and-test-package:
