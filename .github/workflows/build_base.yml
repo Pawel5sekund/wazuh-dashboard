@@ -79,7 +79,7 @@ jobs:
         run: yarn build-platform --linux-arm --skip-os-packages --release
 
       - name: Build linux-arm64
-        if: matrix.ARCHITECTURE == 'arm64'
+        if: matrix.ARCHITECTURE == 'arm64' 
         run: yarn build-platform --linux-arm --skip-os-packages --release
 
       - name: Rename artifact
