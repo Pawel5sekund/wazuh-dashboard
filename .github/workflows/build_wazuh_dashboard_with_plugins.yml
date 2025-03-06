@@ -19,6 +19,8 @@ on:
         options:
           - amd64
           - x86_64
+          - arm64
+          - linux-arm
         default: amd64
       revision:
         type: string
