@@ -21,7 +21,7 @@ on:
           - x86_64
           - arm64
           - linux-arm
-        default: amd64
+        default: arm64
       revision:
         type: string
         description: 'Package revision'
@@ -31,12 +31,12 @@ on:
         type: string
         description: 'Branch/tag/commit of the wazuh-security-dashboards-plugin repository to build the security plugin'
         required: true
-        default: 'main'
+        default: '4.11.0'
       reference_wazuh_plugins:
         type: string
         description: 'Branch/tag/commit of the wazuh-dashboard-plugins repository to build the main plugins'
         required: true
-        default: 'main'
+        default: '4.11.0'
       is_stage:
         type: boolean
         description: 'Set production nomenclature'
@@ -61,7 +61,7 @@ on:
       architecture:
         type: string
         required: true
-        default: amd64
+        default: arm64
       revision:
         type: string
         required: true
@@ -69,11 +69,11 @@ on:
       reference_security_plugins:
         type: string
         required: true
-        default: 'main'
+        default: '4.11.0'
       reference_wazuh_plugins:
         type: string
         required: true
-        default: 'main'
+        default: '4.11.0'
       is_stage:
         type: boolean
         required: true
@@ -124,7 +124,7 @@ jobs:
           else
             PRODUCTION=""
           fi
-          WAZUH_DASHBOARD_SLIM=wazuh-dashboard_${VERSION}-${REVISION}_x64.tar.gz
+          WAZUH_DASHBOARD_SLIM=wazuh-dashboard_${VERSION}-${REVISION}_arm64.tar.gz
           WAZUH_SECURITY_PLUGIN=wazuh-security-dashboards-plugin_${VERSION}-${REVISION}_$(echo ${{ inputs.reference_security_plugins }} | sed 's/\//-/g').zip
           WAZUH_PLUGINS_WAZUH=wazuh-dashboard-plugins_wazuh_${VERSION}-${REVISION}_$(echo ${{ inputs.reference_wazuh_plugins }} | sed 's/\//-/g').zip
           WAZUH_PLUGINS_CORE=wazuh-dashboard-plugins_wazuh-core_${VERSION}-${REVISION}_$(echo ${{ inputs.reference_wazuh_plugins }} | sed 's/\//-/g').zip
