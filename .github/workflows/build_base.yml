@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Build
     defaults:
       run:
@@ -34,7 +34,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: wazuh/wazuh-dashboard
+          repository: Pawel5sekund/wazuh-dashboard
           path: ./artifacts
           ref: ${{ inputs.CHECKOUT_TO }}
 
