@@ -88,7 +88,7 @@ on:
 
 jobs:
   setup-variables:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Setup variables
     outputs:
       CURRENT_DIR: ${{ steps.setup-variables.outputs.CURRENT_DIR }}
@@ -155,7 +155,7 @@ jobs:
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_OUTPUT
 
   validate-job:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: setup-variables
     name: Validate inputs
     steps:
@@ -187,14 +187,14 @@ jobs:
   build-main-plugins:
     needs: [validate-job]
     name: Build plugins
-    uses: wazuh/wazuh-dashboard-plugins/.github/workflows/manual-build.yml@4.11.0
+    uses: Pawel5sekund/wazuh-dashboard-plugins/.github/workflows/manual-build.yml@4.11.0
     with:
       reference: ${{ inputs.reference_wazuh_plugins }}
 
   build-security-plugin:
     needs: [validate-job]
     name: Build security plugin
-    uses: wazuh/wazuh-security-dashboards-plugin/.github/workflows/manual-build.yml@4.11.0
+    uses: Pawel5sekund/wazuh-security-dashboards-plugin/.github/workflows/manual-build.yml@4.11.0
     with:
       reference: ${{ inputs.reference_security_plugins }}
 
